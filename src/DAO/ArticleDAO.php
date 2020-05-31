@@ -34,13 +34,14 @@ class ArticleDAO extends DAO {
         return $this->buildObject($article);
     }
 
-    public function addArticle(){
-        if(isset($_POST)){
-            echo 'Tab: '.implode($_POST).'<br/>';
-            $sql= 'INSERT INTO article (title, content, author, date_creation) VALUES (?, ?, ?, NOW())';
-            $this->createQuery($sql, [$_POST['title'], $_POST['content'], $_POST['author']]);
-            echo 'titre: '.$_POST['title'].'<br/> contenu: '.$_POST['content'].'<br/> Auteur: '.$_POST['author'];
-        }
-        $this->closeCursor();
+    public function addArticle($article){
+        extract($article);
+        $sql = 'INSERT INTO article (title, content, author, date_creation) VALUES (?, ?, ?, NOW())';
+        $this->createQuery($sql, [$title, $content, $author]);
+    }
+
+    public function deleteArticle($articleId){
+        $sql = 'DELETE FROM article WHERE id = ?';
+        $this->createQuery($sql, [$articleId]);
     }
 }
