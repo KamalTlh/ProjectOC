@@ -1,9 +1,9 @@
 <?php
-namespace App\src\DAO;
-use App\src\model\Comment;
+namespace App\model;
+use App\model\Comment;
 
 
-class CommentDAO extends DAO{
+class commentModel extends Model{
 
     private function buildObject($row){
         $comment = new Comment();

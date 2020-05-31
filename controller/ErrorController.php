@@ -1,13 +1,7 @@
 <?php
-namespace App\src\controller;
-use App\src\model\View;
+namespace App\controller;
 
-class ErrorController{
-    private $view;
-
-    public function __construct(){
-        $this->view = new View();
-    }
+class ErrorController extends Controller{
 
     public function errorPage(){
         return $this->view->render('error404', []);

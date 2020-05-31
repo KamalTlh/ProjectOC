@@ -1,18 +1,15 @@
 <?php
-namespace App\config;
+namespace App\controller;
 use Exception;
-use App\src\controller\FrontController;
-use App\src\controller\BackController;
-use App\src\controller\ErrorController;
+use App\controller\ArticleController;
+use App\controller\ErrorController;
 
 class Router{
-    private $frontController;
-    private $backController;
+    private $articleController;
     private $errorController;
     
     public function __construct(){
-        $this->frontController = new FrontController();
-        $this->backController = new BackController();
+        $this->articleController = new ArticleController();
         $this->errorController = new ErrorController();
     }
 
@@ -20,20 +17,20 @@ class Router{
         try{
             if(isset($_GET['route'])){
                 if($_GET['route'] === 'article'){
-                    $this->frontController->article();
+                    $this->articleController->article();
                 }
                 elseif($_GET['route'] === 'newArticle'){
-                    $this->backController->addArticle($_POST);
+                    $this->articleController->addArticle($_POST);
                 }
                 elseif($_GET['route'] === 'deleteArticle'){
-                    $this->backController->deleteArticle($_GET['articleId']);
+                    $this->articleController->deleteArticle($_GET['articleId']);
                 }
                 else{
                     $this->errorController->errorPage();
                 }
             }
             else{
-                $this->frontController->home();
+                $this->articleController->home();
             }
         }
         catch (Exception $e){

@@ -1,5 +1,5 @@
 <?php $this->title = "Article"; ?>
-<h2><a href="../public/index.php?route=deleteArticle&articleId=<?= htmlspecialchars($article->getId());?>">Supprimer article</a></h2>
+<h2><a href="../index.php?route=deleteArticle&articleId=<?= htmlspecialchars($article->getId());?>">Supprimer article</a></h2>
 <hr/>
 <div>
     <h2><?= htmlspecialchars($article->getTitle());?></h2>

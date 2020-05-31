@@ -1,5 +1,5 @@
 <?php $this->title = 'Ajouter un article'; ?>
-<form method="post" action="../public/index.php?route=newArticle">
+<form method="post" action="../index.php?route=newArticle">
     <label for="title">Titre</label><br>
     <input type="text" id="title" name="title"><br>
     <label for="content">Contenu</label><br>
@@ -10,6 +10,7 @@
 </form>
 <hr/>
 <a href="../public/index.php">Retour à l'accueil</a>
+
 <!-- WYSIWYG -->
 <script type="text/javascript" src="js/tinymce/tiny.js"></script>
 <script>

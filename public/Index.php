@@ -5,5 +5,5 @@ require '../config/Autoloader.php';
 use \App\config\Autoloader;
 Autoloader::register();
 
-$router = new \App\config\Router();
+$router = new \App\controller\Router();
 $router->run();

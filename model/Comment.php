@@ -1,5 +1,5 @@
 <?php
-namespace App\src\model;
+namespace App\model;
 
 class Comment{
     private $id;

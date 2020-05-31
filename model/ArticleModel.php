@@ -1,8 +1,8 @@
 <?php
-namespace App\src\DAO;
-use App\src\model\Article;
+namespace App\model;
+use App\model\Article;
 
-class ArticleDAO extends DAO {
+class ArticleModel extends Model {
 
     private function buildObject($row){
         $article = new Article();
