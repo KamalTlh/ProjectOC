@@ -1,16 +1,23 @@
 <?php
 namespace App\view;
+use App\config\Session;
 
 class View{
     private $title;
     private $file;
+    private $session;
+    
+    public function __construct(){
+        $this->session = new Session($_SESSION);
+    }
 
     public function render($template, $data=[]){
         $this->file = '../view/'.$template.'.php';
         $content = $this->renderFile($this->file, $data);
         $view = $this->renderFile('../view/base.php', [
             'title' => $this->title,
-            'content' => $content
+            'content' => $content,
+            'session' => $this->session
         ]);
         echo $view;
     }
