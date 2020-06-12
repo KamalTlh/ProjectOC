@@ -4,9 +4,9 @@
 <p><?= $this->session->show('update_article'); ?></p>
 <p><?= $this->session->show('delete_comment'); ?></p>
 <p>
-<a href="../public/index.php?route=register">Inscription</a>
-<a href="index.php?route=login">Connexion</a>
-<a href="index.php?route=profilAdmin">Administration</a>
+<a class="btn btn-primary float-right" href="../public/index.php?route=createUser">Inscription</a>
+<a class="btn btn-primary float-right" href="index.php?route=login">Connexion</a>
+<a class="btn btn-primary float-right" href="index.php?route=profilAdmin">Administration</a>
 </p>
 <?php
 foreach ($articles as $article){

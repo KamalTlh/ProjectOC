@@ -20,8 +20,6 @@
         <p><?= htmlspecialchars($comment->getContent());?></p>
         <p>Posté le <?= htmlspecialchars($comment->getDate_Creation());?></p>
         <p><a href="../public/index.php?route=flagComment&commentId=<?= htmlspecialchars($comment->getId());?>">Signaler le commentaire</a></p>
-        <p><a href="../public/index.php?route=updateComment&commentId=<?= htmlspecialchars($comment->getId());?>">Modifier le commentaire</a></p>
-        <p><a href="../public/index.php?route=deleteComment&commentId=<?= htmlspecialchars($comment->getId());?>">Supprimer le commentaire</a></p>
         <?php
     }
     ?>

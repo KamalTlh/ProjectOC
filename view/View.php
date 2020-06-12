@@ -6,6 +6,7 @@ class View{
     private $title;
     private $file;
     private $session;
+    private $section;
     
     public function __construct(){
         $this->session = new Session($_SESSION);
@@ -17,6 +18,7 @@ class View{
         $view = $this->renderFile('../view/base.php', [
             'title' => $this->title,
             'content' => $content,
+            'section' => $this->section,
             'session' => $this->session
         ]);
         echo $view;

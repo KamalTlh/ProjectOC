@@ -7,7 +7,6 @@ class UserModel extends Model{
     private $pseudo;
     private $password;
     private $date_creation;
-    private $users;
 
     public function getId(){
         return $this->id;
@@ -41,16 +40,7 @@ class UserModel extends Model{
         $this->date_creation = $date_creation;
     }
 
-    public function getUsers(){
-        return $this->users;
-    }
-
-    public function setUsers($users){
-        $this->users = $users;
-    }
-
     public function hydrate(array $donnees){
-        $user = new UserModel();
         foreach ($donnees as $key => $value){
             // On récupère le nom du setter correspondant à l'attribut.
             $method = 'set'.ucfirst($key);
@@ -58,23 +48,10 @@ class UserModel extends Model{
             // Si le setter correspondant existe.
             if (method_exists($this, $method)){
             // On appelle le setter.
-            $user->$method($value);
+            $this ->$method($value);
             }
         }
-        return $user;
-    }
-
-    public function getListUsers(){
-        $sql = 'SELECT id, pseudo, password, date_creation FROM user ORDER BY id DESC';
-        $result = $this->createQuery($sql);
-        $users = [];
-        foreach( $result as $row){
-            $userId = $row['id'];
-            $users[$userId] = $this->hydrate($row);
-        }
-        $result->closeCursor();
-        $this->setUsers($users);
-        return $this->getUsers();
+        return $this;
     }
 
     public function getUser($userId){
@@ -82,7 +59,7 @@ class UserModel extends Model{
         $result = $this->createQuery($sql, [$userId]);
         $user = $result->fetch();
         $result->closeCursor();
-        return $this->buildObject($user);
+        return $this->hydrate($user);
     }
     
     public function createUser($post){

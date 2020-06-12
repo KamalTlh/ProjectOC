@@ -7,7 +7,6 @@ class ArticleModel extends Model {
     private $content;
     private $author;
     private $date_creation;
-    private $articles;
 
     public function getId(){
         return $this->id;
@@ -49,16 +48,7 @@ class ArticleModel extends Model {
         $this->date_creation = $date_creation;
     }
 
-    public function getArticles(){
-        return $this->articles;
-    }
-
-    public function setArticles($articles){
-        $this->articles = $articles;
-    }
-
     public function hydrate(array $donnees){
-        $article = new ArticleModel();
         foreach ($donnees as $key => $value){
             // On récupère le nom du setter correspondant à l'attribut.
             $method = 'set'.ucfirst($key);
@@ -66,23 +56,10 @@ class ArticleModel extends Model {
             // Si le setter correspondant existe.
             if (method_exists($this, $method)){
             // On appelle le setter.
-            $article->$method($value);
+            $this->$method($value);
             }
         }
-        return $article;
-    }
-
-    public function getListArticles(){
-        $sql = 'SELECT id, title, content, author, date_creation FROM article ORDER BY id DESC';
-        $result = $this->createQuery($sql);
-        $articles = [];
-        foreach ($result as $row){
-            $articleId = $row['id'];
-            $articles[$articleId] = $this->hydrate($row);
-        }
-        $result->closeCursor();
-        $this->setArticles($articles);
-        return $this->getArticles();
+        return $this;
     }
 
     public function getArticle($articleId){

@@ -4,7 +4,7 @@ namespace App\controller;
 class ArticleController extends Controller{
 
     public function home(){
-        $articles = $this->articleModel->getListArticles();
+        $articles = $this->articlesModel->getListArticles();
         return $this->view->render('home',[
             'articles'=>$articles
         ]);
@@ -12,7 +12,7 @@ class ArticleController extends Controller{
 
     public function article(){
         $article = $this->articleModel->getArticle($_GET['articleId']);
-        $comments = $this->commentModel->getCommentsFromArticle($_GET['articleId']);
+        $comments = $this->commentsModel->getCommentsFromArticle($_GET['articleId']);
         return $this->view->render('single',[
             'article'=>$article,
             'comments'=>$comments

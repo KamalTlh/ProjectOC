@@ -15,6 +15,13 @@ class UserController extends Controller{
         return $this->view->render('register', []);
     }
 
+    public function readUser($userId){
+        $user = $this->userModel->getUser($userId);
+        return $this->view->render('ReadUser', [
+            'user'=> $user
+        ]);
+    }
+
     public function updateUser($post, $userId){
         $user = $this->userModel->getUser($userId);
         if(isset($post['submit'])){
@@ -32,11 +39,11 @@ class UserController extends Controller{
     }
 
     public function administration(){
-        $articles = $this->articleModel->getListArticles();
-        $users = $this->userModel->getListUsers();
-        $flagComments = $this->commentModel->getFlagComments();
+        $articles = $this->articlesModel->getListArticles();
+        $users = $this->usersModel->getListUsers();
+        $flagComments = $this->commentsModel->getFlagComments();
         
-        return $this->view->render('ProfilAdmin', [
+        return $this->view->render('Administration', [
             'users'=> $users,
             'articles'=> $articles,
             'flagComments'=> $flagComments

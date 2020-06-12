@@ -49,8 +49,11 @@ class Router{
                 elseif($_GET['route'] === 'login'){
                     $this->userController->login($_POST);
                 }
-                elseif($_GET['route'] === 'register'){
+                elseif($_GET['route'] === 'createUser'){
                     $this->userController->createUser($_POST);
+                }
+                elseif($_GET['route'] === 'readUser'){
+                    $this->userController->readUser($_GET['userId']);
                 }
                 elseif($_GET['route'] === 'updateUser'){
                     $this->userController->updateUser($_POST, $_GET['userId']);
