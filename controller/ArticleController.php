@@ -13,7 +13,7 @@ class ArticleController extends Controller{
     public function article(){
         $article = $this->articleModel->getArticle($_GET['articleId']);
         $comments = $this->commentsModel->getCommentsFromArticle($_GET['articleId']);
-        return $this->view->render('single',[
+        return $this->view->render('ReadArticle',[
             'article'=>$article,
             'comments'=>$comments
         ]);
@@ -21,11 +21,18 @@ class ArticleController extends Controller{
 
     public function addArticle($post){
         if(isset($post['submit'])){
-            $this->articleModel->addArticle($post);
-            $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
-            header('Location: ../public/index.php');
+            $errors = $this->validation->validate($post, 'Article');
+            if(!($errors)){
+                $this->articleModel->addArticle($post);
+                $this->session->set('add_article', 'Le nouvel article a bien été ajouté');
+                header('Location: ../public/index.php');
+            }
+            return $this->view->render('CreateArticle', [
+                'post' => $post,
+                'errors' => $errors
+            ]);
         }
-        return $this->view->render('AddArticle', []);
+        return $this->view->render('CreateArticle');
     }
 
     public function updateArticle($post, $articleId){
@@ -33,7 +40,7 @@ class ArticleController extends Controller{
         if(isset($post['submit'])){
             $this->articleModel->updateArticle($post, $articleId);
             $this->session->set('update_article', 'L\'article a bien été modifié');
-            header('Location: ../public/index.php?route=profilAdmin');
+            header('Location: ../public/index.php?route=Administration');
         }
         return $this->view->render('UpdateArticle', [
             'article'=>$article
@@ -43,6 +50,6 @@ class ArticleController extends Controller{
     public function deleteArticle($articleId){
         $this->articleModel->deleteArticle($articleId);
         $this->session->set('delete_article', 'L\'article a bien été supprimé');
-        header('Location: ../public/index.php');
+        header('Location: ../public/index.php?route=Administration');
     }
 }

@@ -1,21 +1,23 @@
 <?php $this->title = "Accueil"; ?>
 <p><?= $this->session->show('add_article'); ?></p>
-<p><?= $this->session->show('delete_article'); ?></p>
 <p><?= $this->session->show('update_article'); ?></p>
 <p><?= $this->session->show('delete_comment'); ?></p>
-<p>
-<a class="btn btn-primary float-right" href="../public/index.php?route=createUser">Inscription</a>
-<a class="btn btn-primary float-right" href="index.php?route=login">Connexion</a>
-<a class="btn btn-primary float-right" href="index.php?route=profilAdmin">Administration</a>
-</p>
 <?php
 foreach ($articles as $article){
-?>
-<br>
-<h2 class="post-title">
-  <a href="index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"><?= htmlspecialchars($article->getTitle());?></a>
-</h2>
-<p>Posté par <?= htmlspecialchars($article->getAuthor());?> le : <?= htmlspecialchars($article->getDate_creation());?></p>
-<?php
+  ?>
+  <div class="card mb-4">
+    <img class="card-img-top" src="img/<?= htmlspecialchars($article->getTitle());?>.jpg" alt="Card image cap">
+    <div class="card-body">
+      <h2 class="card-title"><?= htmlspecialchars($article->getTitle());?></h2>
+      <p class="card-text"><?= substr($article->getContent(), 0, 150) ?> ...</p>
+      <a href="index.php?route=readArticle&articleId=<?= htmlspecialchars($article->getId());?>" class="btn btn-primary">Lire l'article &rarr;</a>
+    </div>
+    <div class="card-footer text-muted">
+      Publié le <?= htmlspecialchars($article->getDate_creation());?> par
+      <p><?= htmlspecialchars($article->getAuthor());?></p>
+    </div>
+  </div>
+  <?php
 }
 ?>
+

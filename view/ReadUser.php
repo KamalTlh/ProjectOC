@@ -1,5 +1,4 @@
 <?php $this->title = "Utilisateur" ?>
-
 <div>
     <p>ID : <?= htmlspecialchars($user->getId());?></p>
     <p>Pseudo : <?= htmlspecialchars($user->getPseudo());?></p>

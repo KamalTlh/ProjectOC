@@ -1,3 +1,6 @@
+<p><?= $this->session->show('delete_article'); ?></p>
+<p><?= $this->session->show('delete_user'); ?></p>
+
 <div class="container">
     <div class="table-wrapper">
         <div class="table-title">
@@ -15,15 +18,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="text-center"><b>Articles</b>Details</h2>
-                </div>
-                <div class="col-sm-4">
-                    <div class="search-box">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
-                        </div>
-                    </div>
+                    <h2 class="text-center"><b>Articles</b> Details</h2>
                 </div>
             </div>
         </div>
@@ -50,9 +45,9 @@
                     <td><?= htmlspecialchars($article->getAuthor());?></td>
                     <td>Créé le : <?= htmlspecialchars($article->getDate_Creation());?></td>
                     <td>
-                        <a href="../public/index.php?route=article&articleId=<?= htmlspecialchars($article->getId());?>"
+                        <a href="../public/index.php?route=readArticle&articleId=<?= htmlspecialchars($article->getId());?>"
                             class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                        <a class="add" title="Add" data-toggle="tooltip" href="../public/index.php?route=addArticle"><i
+                        <a class="add" title="Add" data-toggle="tooltip" href="../public/index.php?route=createArticle"><i
                                 class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"
                             href="../public/index.php?route=updateArticle&articleId=<?= $article->getId(); ?>"><i
@@ -87,15 +82,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="text-center"><b>Commentaires</b>Details</h2>
-                </div>
-                <div class="col-sm-4">
-                    <div class="search-box">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
-                        </div>
-                    </div>
+                    <h2 class="text-center"><b>Commentaires</b> Details</h2>
                 </div>
             </div>
         </div>
@@ -120,7 +107,7 @@
                     <td><?= htmlspecialchars($comment->getDate_Creation());?></td>
                     <td>
                         <a class="view" title="View" data-toggle="tooltip"
-                            href="../public/index.php?route=article&articleId=<?= $comment->getArticle_Id(); ?>"><i
+                            href="../public/index.php?route=readArticle&articleId=<?= $comment->getArticle_Id(); ?>"><i
                         class="material-icons">&#xE417;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"
                             href="../public/index.php?route=updateComment&commentId=<?= $comment->getId(); ?>"><i
@@ -156,15 +143,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="text-center"><b>Utilisateurs</b>Details</h2>
-                </div>
-                <div class="col-sm-4">
-                    <div class="search-box">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
-                            <input type="text" class="form-control" placeholder="Search&hellip;">
-                        </div>
-                    </div>
+                    <h2 class="text-center"><b>Utilisateurs</b> Details</h2>
                 </div>
             </div>
         </div>

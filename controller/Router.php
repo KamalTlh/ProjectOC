@@ -1,6 +1,5 @@
 <?php
 namespace App\controller;
-use Exception;
 use App\controller\ArticleController;
 use App\controller\CommentController;
 use App\controller\ErrorController;
@@ -22,10 +21,10 @@ class Router{
     public function run(){
         try{
             if(isset($_GET['route'])){
-                if($_GET['route'] === 'article'){
+                if($_GET['route'] === 'readArticle'){
                     $this->articleController->article();
                 }
-                elseif($_GET['route'] === 'addArticle'){
+                elseif($_GET['route'] === 'createArticle'){
                     $this->articleController->addArticle($_POST);
                 }
                 elseif($_GET['route'] === 'updateArticle'){
@@ -34,7 +33,7 @@ class Router{
                 elseif($_GET['route'] === 'deleteArticle'){
                     $this->articleController->deleteArticle($_GET['articleId']);
                 }
-                elseif($_GET['route'] === 'addComment'){
+                elseif($_GET['route'] === 'createComment'){
                     $this->commentController->addComment($_POST, $_GET['articleId']);
                 }
                 elseif($_GET['route'] === 'updateComment'){
@@ -61,7 +60,7 @@ class Router{
                 elseif($_GET['route'] === 'deleteUser'){
                     $this->userController->deleteUser($_GET['userId']);
                 }
-                elseif($_GET['route'] === 'profilAdmin'){
+                elseif($_GET['route'] === 'Administration'){
                     $this->userController->administration();
                 }
                 else{

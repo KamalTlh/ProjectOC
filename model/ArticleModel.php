@@ -83,6 +83,8 @@ class ArticleModel extends Model {
     }
 
     public function deleteArticle($articleId){
+        $sql = 'DELETE FROM comment WHERE article_id = ?';
+        $this->createQuery($sql, [$articleId]);
         $sql = 'DELETE FROM article WHERE id = ?';
         $this->createQuery($sql, [$articleId]);
     }

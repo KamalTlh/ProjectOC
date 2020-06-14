@@ -1,12 +1,10 @@
-<?php $this->title = 'Modifier un commentaire'; ?>
 <?php include('Form_comment.php'); ?>
-
 <!-- WYSIWYG -->
 <script type="text/javascript" src="js/tinymce/tiny.js"></script>
 <script>
     onload=function(){
-        tinymce.init({
-            selector: 'textarea'
-        });
-    }   
+    tinymce.init({
+        selector: 'textarea'
+    });
+}
 </script>

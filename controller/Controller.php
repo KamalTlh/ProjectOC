@@ -8,6 +8,7 @@ use App\model\UserModel;
 use App\model\UsersModel;
 use App\view\View;
 use App\config\Session;
+use App\constraint\Validation;
 
 abstract class Controller{
     protected $articleModel;
@@ -18,6 +19,7 @@ abstract class Controller{
     protected $usersModel;
     protected $view;
     protected $session;
+    protected $validation;
 
     public function __construct(){
         $this->articleModel = new ArticleModel();
@@ -28,5 +30,6 @@ abstract class Controller{
         $this->usersModel = new UsersModel();
         $this->view = new View();
         $this->session = new Session($_SESSION);
+        $this->validation = new Validation();
     }
 }
