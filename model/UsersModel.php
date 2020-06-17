@@ -6,6 +6,10 @@ class UsersModel extends Model{
 
     private $users;
 
+    public function __construct(){
+        $this->getListUsers();
+    }
+
     public function getUsers(){
         return $this->users;
     }
@@ -15,7 +19,7 @@ class UsersModel extends Model{
     }
 
     public function getListUsers(){
-        $sql = 'SELECT id, pseudo, password, date_creation FROM user ORDER BY id DESC';
+        $sql = 'SELECT id, pseudo, email, password, date_creation FROM user ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $users = [];
         foreach( $result as $row){

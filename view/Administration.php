@@ -152,6 +152,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Pseudo</th>
+                    <th>Email</th>
                     <th>Date création</th>
                     <th>Actions</th>
                 </tr>
@@ -168,17 +169,20 @@
                         <p><?= htmlspecialchars($user->getPseudo());?></p>
                     </td>
                     <td>
+                        <p><?= htmlspecialchars($user->getEmail());?></p>
+                    </td>
+                    <td>
                         <p><?= htmlspecialchars($user->getDate_Creation());?></p>
                     </td>
                     <td>
                         <a class="view" title="View" data-toggle="tooltip"
-                            href="../public/index.php?route=readUser&userId=<?= $user->getId(); ?>"><i
+                            href="../public/index.php?route=profile&userId=<?= $user->getId(); ?>"><i
                         class="material-icons">&#xE417;</i></a>
                         <a class="add" title="Add" data-toggle="tooltip"
                             href="../public/index.php?route=createUser"><i
                         class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"
-                            href="../public/index.php?route=updateUser&userId=<?= $user->getId(); ?>"><i
+                            href="../public/index.php?route=profile&userId=<?= $user->getId(); ?>"><i
                                 class="material-icons">&#xE254;</i></a>
                         <a class="delete" title="Delete" data-toggle="tooltip"
                             href="../public/index.php?route=deleteUser&userId=<?= $user->getId(); ?>"><i

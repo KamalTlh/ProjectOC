@@ -2,6 +2,8 @@
 <p><?= $this->session->show('add_article'); ?></p>
 <p><?= $this->session->show('update_article'); ?></p>
 <p><?= $this->session->show('delete_comment'); ?></p>
+<p><?= $this->session->show('login'); ?></p>
+<p><?= $this->session->show('logout'); ?></p>
 <?php
 foreach ($articles as $article){
   ?>
@@ -21,3 +23,12 @@ foreach ($articles as $article){
 }
 ?>
 
+<!-- Pagination -->
+<ul class="pagination justify-content-center mb-4">
+  <li class="page-item">
+    <a class="page-link" href="#">&larr; Older</a>
+  </li>
+  <li class="page-item disabled">
+    <a class="page-link" href="#">Newer &rarr;</a>
+  </li>
+</ul>

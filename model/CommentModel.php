@@ -88,7 +88,6 @@ class CommentModel extends Model{
 
     public function updateComment($comment, $commentId){
         extract($comment);
-        echo 'comment: '.$pseudo.' '.$content.' '.$commentId;
         $sql = 'UPDATE comment SET pseudo = ?, content = ? WHERE id = ?';
         $this->createQuery($sql, [$pseudo, strip_tags($content), $commentId]);
     }

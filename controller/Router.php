@@ -48,6 +48,12 @@ class Router{
                 elseif($_GET['route'] === 'login'){
                     $this->userController->login($_POST);
                 }
+                elseif($_GET['route'] === 'logout'){
+                    $this->userController->logout();
+                }
+                elseif($_GET['route'] === 'profile'){
+                    $this->userController->profile($_GET['userId']);
+                }
                 elseif($_GET['route'] === 'createUser'){
                     $this->userController->createUser($_POST);
                 }
@@ -59,6 +65,9 @@ class Router{
                 }
                 elseif($_GET['route'] === 'deleteUser'){
                     $this->userController->deleteUser($_GET['userId']);
+                }
+                elseif($_GET['route'] === 'updatePassword'){
+                    $this->userController->updatePassword($_POST, $_GET['userId']);
                 }
                 elseif($_GET['route'] === 'Administration'){
                     $this->userController->administration();
