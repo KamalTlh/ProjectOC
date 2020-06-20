@@ -10,8 +10,7 @@
 
 <!-- Author -->
 <p class="lead">
-    par
-    <?= htmlspecialchars($article->getAuthor());?>
+    par Jean Forteroche
 </p>
 
 <hr>

@@ -25,7 +25,7 @@ class CommentModel extends Model{
     public function setPseudo($pseudo){
         $this->pseudo = $pseudo;
     }
-
+    
     public function getContent(){
         return $this->content;
     }
@@ -80,7 +80,7 @@ class CommentModel extends Model{
         return $this->hydrate($comment);
     }
 
-    public function addComment($comment, $articleId){
+    public function addComment($comment, $articleId, $pseudo){
         extract($comment);
         $sql = 'INSERT INTO comment (pseudo, content, date_creation, flag, article_id) VALUES (?, ?, NOW(), ?, ?)';
         $this->createQuery($sql, [$pseudo, strip_tags($content), 0, $articleId]);
@@ -88,8 +88,8 @@ class CommentModel extends Model{
 
     public function updateComment($comment, $commentId){
         extract($comment);
-        $sql = 'UPDATE comment SET pseudo = ?, content = ? WHERE id = ?';
-        $this->createQuery($sql, [$pseudo, strip_tags($content), $commentId]);
+        $sql = 'UPDATE comment SET content = ? WHERE id = ?';
+        $this->createQuery($sql, [strip_tags($content), $commentId]);
     }
 
     public function deleteComment($commentId){

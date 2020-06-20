@@ -6,9 +6,6 @@ $content = isset($comment) && $comment->getContent() ? htmlspecialchars($comment
 ?>
 
 <form method="post" action="../public/index.php?route=<?= $route; ?>">
-    <label for="pseudo">Pseudo</label><br>
-    <input type="text" id="pseudo" name="pseudo" value="<?= $pseudo; ?>"><br>
-    <?= isset($errors['pseudo']) ? $errors['pseudo'] : ''; ?>
     <label for="content">Contenu</label><br>
     <textarea id="content" name="content"><?= $content; ?></textarea><br>
     <?= isset($errors['content']) ? $errors['content'] : ''; ?>

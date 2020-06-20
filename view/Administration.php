@@ -42,13 +42,11 @@
                     <td><?= htmlspecialchars($article->getId());?></td>
                     <td><?= htmlspecialchars($article->getTitle());?></td>
                     <td><?= substr(htmlspecialchars($article->getContent()), 0, 50);?></td>
-                    <td><?= htmlspecialchars($article->getAuthor());?></td>
+                    <td>Jean Forteroche</td>
                     <td>Créé le : <?= htmlspecialchars($article->getDate_Creation());?></td>
                     <td>
                         <a href="../public/index.php?route=readArticle&articleId=<?= htmlspecialchars($article->getId());?>"
                             class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
-                        <a class="add" title="Add" data-toggle="tooltip" href="../public/index.php?route=createArticle"><i
-                                class="material-icons">&#xE03B;</i></a>
                         <a class="edit" title="Edit" data-toggle="tooltip"
                             href="../public/index.php?route=updateArticle&articleId=<?= $article->getId(); ?>"><i
                                 class="material-icons">&#xE254;</i></a>
@@ -62,6 +60,8 @@
 }
 ?>
         </table>
+        <a class="add" title="Add" data-toggle="tooltip" href="../public/index.php?route=createArticle"><i
+                                class="material-icons">article&#xE03B;</i></a>
     </div>
 </div>
 
@@ -154,6 +154,7 @@
                     <th>Pseudo</th>
                     <th>Email</th>
                     <th>Date création</th>
+                    <th>Rôle</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -173,6 +174,9 @@
                     </td>
                     <td>
                         <p><?= htmlspecialchars($user->getDate_Creation());?></p>
+                    </td>
+                    <td>
+                        <p><?= htmlspecialchars($user->getRole());?></p>
                     </td>
                     <td>
                         <a class="view" title="View" data-toggle="tooltip"

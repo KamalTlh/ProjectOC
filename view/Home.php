@@ -4,6 +4,7 @@
 <p><?= $this->session->show('delete_comment'); ?></p>
 <p><?= $this->session->show('login'); ?></p>
 <p><?= $this->session->show('logout'); ?></p>
+<p><?= $this->session->show('need_admin'); ?></p>
 <?php
 foreach ($articles as $article){
   ?>
@@ -16,7 +17,7 @@ foreach ($articles as $article){
     </div>
     <div class="card-footer text-muted">
       Publié le <?= htmlspecialchars($article->getDate_creation());?> par
-      <p><?= htmlspecialchars($article->getAuthor());?></p>
+      <p>Jean Forteroche</p>
     </div>
   </div>
   <?php

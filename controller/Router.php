@@ -34,7 +34,7 @@ class Router{
                     $this->articleController->deleteArticle($_GET['articleId']);
                 }
                 elseif($_GET['route'] === 'createComment'){
-                    $this->commentController->addComment($_POST, $_GET['articleId']);
+                    $this->commentController->addComment($_POST, $_GET['articleId'], $_SESSION['pseudo']);
                 }
                 elseif($_GET['route'] === 'updateComment'){
                     $this->commentController->updateComment($_POST, $_GET['commentId']);

@@ -32,4 +32,24 @@ abstract class Controller{
         $this->session = new Session($_SESSION);
         $this->validation = new Validation();
     }
+
+    protected function checkLoggedIn(){
+        if(!($this->session->get('role'))){
+            $this->session->set('need_login', 'Vous devez vous connectez pour accéder à cette page');
+            header('Location: ../public/index.php?route=login');
+        }
+        else{
+            return true;
+        }
+    }
+
+    protected function checkAdmin(){
+        if(!($this->session->get('role') === 'admin')){
+            $this->session->set('need_admin', 'Vous devez être administrateur pour accéder à cette page');
+            header('Location: ../public/index.php');
+        }
+        else{
+            return true;
+        }
+    }
 }

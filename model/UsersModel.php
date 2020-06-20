@@ -19,7 +19,7 @@ class UsersModel extends Model{
     }
 
     public function getListUsers(){
-        $sql = 'SELECT id, pseudo, email, password, date_creation FROM user ORDER BY id DESC';
+        $sql = 'SELECT id, pseudo, email, password, date_creation, role_id FROM user ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $users = [];
         foreach( $result as $row){

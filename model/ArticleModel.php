@@ -5,7 +5,6 @@ class ArticleModel extends Model {
     private $id;
     private $title;
     private $content;
-    private $author;
     private $date_creation;
 
     public function getId(){
@@ -32,14 +31,6 @@ class ArticleModel extends Model {
         $this->content = $content;
     }
 
-    public function getAuthor(){
-        return $this->author;
-    }
-
-    public function setAuthor($author){
-        $this->author = $author;
-    }
-
     public function getDate_Creation(){
         return $this->date_creation;
     }
@@ -63,7 +54,7 @@ class ArticleModel extends Model {
     }
 
     public function getArticle($articleId){
-        $sql = 'SELECT id, title, content, author, date_creation FROM article WHERE id = ?';
+        $sql = 'SELECT id, title, content, date_creation FROM article WHERE id = ?';
         $result = $this->createQuery($sql, [$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
@@ -72,14 +63,14 @@ class ArticleModel extends Model {
 
     public function addArticle($article){
         extract($article);
-        $sql = 'INSERT INTO article (title, content, author, date_creation) VALUES (?, ?, ?, NOW())';
-        $this->createQuery($sql, [$title, strip_tags($content), $author]);
+        $sql = 'INSERT INTO article (title, content, date_creation) VALUES (?, ?, NOW())';
+        $this->createQuery($sql, [$title, strip_tags($content)]);
     }
     
     public function updateArticle($article, $articleId){
         extract($article);
-        $sql = 'UPDATE article SET title = ?, content = ?, author = ? WHERE id = ?';
-        $this->createQuery($sql, [$title, strip_tags($content), $author, $articleId]);
+        $sql = 'UPDATE article SET title = ?, content = ? WHERE id = ?';
+        $this->createQuery($sql, [$title, strip_tags($content), $articleId]);
     }
 
     public function deleteArticle($articleId){

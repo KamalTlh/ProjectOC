@@ -1,5 +1,6 @@
 <?php $this->title = "Connexion"; ?>
 <?= $this->session->show('error_login'); ?>
+<?= $this->session->show('need_login'); ?>
 <div class="login-form">
     <form method="post" action="../public/index.php?route=login">
         <h2 class="text-center">Log in</h2>       

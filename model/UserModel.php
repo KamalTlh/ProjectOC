@@ -8,6 +8,7 @@ class UserModel extends Model{
     private $email;
     private $password;
     private $date_creation;
+    private $role;
 
     public function getId(){
         return $this->id;
@@ -49,6 +50,14 @@ class UserModel extends Model{
         $this->date_creation = $date_creation;
     }
 
+    public function getRole(){
+        return $this->role;
+    }
+
+    public function setRole($role){
+        $this->role = $role;
+    }
+
     public function hydrate(array $donnees){
         foreach ($donnees as $key => $value){
             // On récupère le nom du setter correspondant à l'attribut.
@@ -63,26 +72,8 @@ class UserModel extends Model{
         return $this;
     }
 
-    public function isPseudoUnique($post){
-        $sql = 'SELECT COUNT(pseudo) FROM user WHERE pseudo = ?';
-        $result = $this->createQuery($sql, [$post['pseudo']]);
-        $isPseudoUnique = $result->fetchColumn();
-        if($isPseudoUnique) {
-            return '<p><b>Le pseudo existe déjà</b></p>';
-        }
-    }
-
-    public function isEmailUnique($post){
-        $sql = 'SELECT COUNT(email) FROM user WHERE email = ?';
-        $result = $this->createQuery($sql, [$post['email']]);
-        $isEmailUnique = $result->fetchColumn();
-        if($isEmailUnique) {
-            return '<p><b>L\'email existe déjà</b></p>';
-        }
-    }
-
     public function getUser($userId){
-        $sql = 'SELECT id, pseudo, email, password, date_creation FROM user WHERE id = ?';
+        $sql = 'SELECT id, pseudo, email, password, date_creation, role_id FROM user WHERE id = ?';
         $result = $this->createQuery($sql, [$userId]);
         $user = $result->fetch();
         $result->closeCursor();
@@ -90,14 +81,14 @@ class UserModel extends Model{
     }
     
     public function createUser($post){
-        $sql = 'INSERT INTO user (pseudo, email, password, date_creation) VALUES (?, ?, ?, NOW())';
+        $sql = 'INSERT INTO user (pseudo, email, password, date_creation, role_id) VALUES (?, ?, ?, NOW(), 2)';
         $this->createQuery($sql, [$post['pseudo'], $post['email'], password_hash($post['password'],PASSWORD_BCRYPT)]);
  
     }
 
     public function updateUser($user, $userId){
         extract($user);
-        $sql =' UPDATE user SET pseudo = ?, email = ?,  password= ? WHERE id = ?';
+        $sql =' UPDATE user SET pseudo = ?, email = ?, password= ? WHERE id = ?';
         $this->createQuery($sql, [$pseudo, $email, password_hash($password, PASSWORD_BCRYPT), $userId]);
     }
 
@@ -108,14 +99,12 @@ class UserModel extends Model{
 
     public function updatePassword($user, $userId){
         extract($user);
-        if ( $password === $verified_password){
-            $sql =' UPDATE user SET password = ? WHERE id = ?';
-            $this->createQuery($sql, [password_hash($password, PASSWORD_BCRYPT), $userId]);
-        }
+        $sql =' UPDATE user SET password = ? WHERE id = ?';
+        $this->createQuery($sql, [password_hash($password, PASSWORD_BCRYPT), $userId]);
     }
 
     public function login($post){
-        $sql = 'SELECT id, password FROM user WHERE pseudo = ? OR email = ?';
+        $sql = 'SELECT id, pseudo, password FROM user WHERE pseudo = ? OR email = ?';
         $data = $this->createQuery($sql, [$post['userlog'], $post['userlog']]);
         $result = $data->fetch();
         $isPasswordValid = password_verify($post['password'], $result['password']);
@@ -123,5 +112,32 @@ class UserModel extends Model{
             'result'=> $result,
             'isPasswordValid'=> $isPasswordValid
         ];
+    }
+
+    public function checkUserRole($userlog){
+        $sql = 'SELECT role.name FROM user INNER JOIN role ON role.id = user.role_id WHERE pseudo = ? OR email = ?';
+        $data = $this->createQuery($sql, [$userlog, $userlog]);
+        $result = $data->fetch();
+        return [
+            'result'=> $result['name']
+        ];
+    }
+
+    public function isPseudoUnique($post, $userId){
+        $sql = 'SELECT COUNT(pseudo) FROM user WHERE pseudo = ? AND id != ?';
+        $result = $this->createQuery($sql, [$post['pseudo'], $userId]);
+        $isPseudoUnique = $result->fetchColumn();
+        if($isPseudoUnique) {
+            return '<p><b>Le pseudo existe déjà</b></p>';
+        }
+    }
+
+    public function isEmailUnique($post, $userId){
+        $sql = 'SELECT COUNT(email) FROM user WHERE email = ? AND id != ?';
+        $result = $this->createQuery($sql, [$post['email'], $userId]);
+        $isEmailUnique = $result->fetchColumn();
+        if($isEmailUnique) {
+            return '<p><b>L\'email existe déjà</b></p>';
+        }
     }
 }

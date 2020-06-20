@@ -41,20 +41,24 @@
             </a>
           </li>
           <?php
-  if ($this->session->get('userlog')) {
-  ?>
-          <li class="nav-item">
-            <a class="nav-link" href="../public/index.php?route=logout">Déconnexion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?route=profile&userId=<?= $this->session->get('id') ?>">Profil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?route=Administration">Administration</a>
-          </li>
-          <?php
-  }
-else{
+    if ($this->session->get('role')) {
+    ?>
+        <li class="nav-item">
+          <a class="nav-link" href="../public/index.php?route=logout">Déconnexion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?route=profile&userId=<?= $this->session->get('user_id') ?>">Profil</a>
+        </li>
+        <?php
+        if($this->session->get('role') === 'admin'){
+        ?>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?route=Administration">Administration</a>
+        </li>
+        <?php
+        }
+    }
+    else{
     ?>
           <li class="nav-item">
             <a class="nav-link" href="index.php?route=createUser">Inscription</a>
@@ -63,8 +67,8 @@ else{
             <a class="nav-link" href="index.php?route=login">Connexion</a>
           </li>
           <?php
-}
-?>
+    }
+    ?>
         </ul>
       </div>
     </div>

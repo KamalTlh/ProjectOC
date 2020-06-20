@@ -15,7 +15,7 @@ class ArticlesModel extends Model {
     }
 
     public function getListArticles(){
-        $sql = 'SELECT id, title, content, author, date_creation FROM article ORDER BY id DESC';
+        $sql = 'SELECT id, title, content, date_creation FROM article ORDER BY id DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
