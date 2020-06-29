@@ -42,7 +42,7 @@
             <li class="nav-item">
               <a class="nav-link" href="index.php?route=profile&userId=<?= $this->session->get('user_id') ?>">Profil</a>
             </li>
-              <?php
+            <?php
               if($this->session->get('role') === 'admin'){
               ?>
             <li class="nav-item">
@@ -52,7 +52,7 @@
             }
             ?>
             <li class="nav-item">
-            <a class="nav-link" href="index.php?route=logout">Déconnexion</a>
+              <a class="nav-link" href="index.php?route=logout">Déconnexion</a>
             </li>
             <?php
           }
@@ -87,11 +87,12 @@
       </div>
     </div>
   </main>
-  
+
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+      <p class="m-0 text-center text-white">Copyright &copy; Formation Openclassrooms - Développeur Web Junior - Projet
+        n°4 : Créez un blog pour un écrivain</p>
     </div>
     <!-- /.container -->
   </footer>

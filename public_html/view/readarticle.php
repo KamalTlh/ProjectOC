@@ -43,7 +43,7 @@ foreach($comments as $comment){
         </div>
         <p class="date_comment"><?= htmlspecialchars(strftime("%d-%m-%Y à %H:%M",strtotime($comment->getDate_Creation())));?></p>
     </div>
-    <?php if($comment->getFlag() === '0'){ ?>
+    <?php if($comment->getFlag() === '0' && $this->session->get('user_id')){ ?>  
     <p class="flag"><a href="index.php?route=flagcomment&commentId=<?= htmlspecialchars($comment->getId());?>">Signaler le commentaire</a></p>
     <?php } ?>
     <hr>

@@ -1,4 +1,10 @@
 <?php $this->title = "Accueil"; ?>
+<div class="jumbotron">
+      <h1 class="title text-center">Billet simple pour l'Alaska</h1>
+      <p class="presentation"><em>Bienvenue, je suis Jean Forteroche, acteur et écrivain. Je travaille actuellement sur mon nouveau roman "Billet simple pour l'Alaska".
+        Je publierais chaque nouvel épisode sur ce site pour vous permettre de les lire sans attendre! N'hésitez pas à laisser vos commentaires et vos réactions!</em></p>
+      <hr class="my-4">
+</div>
 <h6 class="session_msg"><?= $this->session->show('add_article'); ?></h6>
 <h6 class="session_msg"><?= $this->session->show('login'); ?></h6>
 <h6 class="session_msg"><?= $this->session->show('logout'); ?></h6>
