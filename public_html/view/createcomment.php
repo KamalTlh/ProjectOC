@@ -1,0 +1,1 @@
+<?php include('form_comment.php'); ?>
