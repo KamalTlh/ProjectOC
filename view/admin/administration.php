@@ -4,6 +4,8 @@
 <h6 class="session_msg"><?= $this->session->show('unflag_comment'); ?></h6>
 <h6 class="session_msg"><?= $this->session->show('account_delete'); ?></h6>
 <h6 class="session_msg"><?= $this->session->show('account_created'); ?></h6>
+<h6 class="session_msg"><?= $this->session->show('user_updatedByAdmin'); ?></h6>
+
 
 <nav class="nav nav-tabs">
     <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Articles</a>
@@ -27,9 +29,9 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Titre<i class="fa fa-sort"></i></th>
+                            <th>Titre</th>
                             <th>Contenu</th>
-                            <th>Auteur<i class="fa fa-sort"></i></th>
+                            <th>Auteur</th>
                             <th>Date publication</th>
                             <th>Actions</th>
                         </tr>
@@ -42,7 +44,7 @@
                         <tr>
                             <td><?= htmlspecialchars($article->getId());?></td>
                             <td><?= htmlspecialchars($article->getTitle());?></td>
-                            <td><?= substr(htmlspecialchars($article->getContent()), 0, 50);?></td>
+                            <td><?= substr(htmlspecialchars(strip_tags($article->getContent())), 0, 50);?></td>
                             <td>Jean Forteroche</td>
                             <td>Créé le : <?= htmlspecialchars($article->getDate_Creation());?></td>
                             <td>
@@ -143,7 +145,7 @@
                             <th>Id</th>
                             <th>Pseudo</th>
                             <th>Email</th>
-                            <th>Date création</th>
+                            <th>Date creation</th>
                             <th>Rôle</th>
                             <th>Actions</th>
                         </tr>

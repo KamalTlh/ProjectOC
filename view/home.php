@@ -20,7 +20,7 @@ foreach ($articles as $article){
     <div class="card-body">
       <h2 class="card-title"><?= htmlspecialchars($article->getTitle());?></h2>
       <p class="card-text"><?= substr(strip_tags($article->getContent()), 0, 150) ?> ...</p>
-      <a href="index.php?route=readarticle&articleId=<?= htmlspecialchars_decode($article->getId());?>" class="btn btn-primary">Lire l'article &rarr;</a>
+      <a href="index.php?route=readarticle&articleId=<?= htmlspecialchars_decode($article->getId());?>" class="btn btn-primary">Lire &rarr;</a>
     </div>
   </div>
   <?php

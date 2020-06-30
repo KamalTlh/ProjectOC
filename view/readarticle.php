@@ -24,6 +24,7 @@
 </div>
 <!-- Comments Form -->
 <?php include('createcomment.php'); ?>
+
 <?php
 foreach($comments as $comment){
     ?>

@@ -53,8 +53,14 @@ class UserController extends Controller{
                 }
                 if(!($errors)){
                     $this->userModel->updateUser($post, $userId);
-                    $this->session->set('user_updated', 'Vos informations ont été mises à jour.');
-                    header('Location: index.php');
+                    if ($this->session->get('role') === 'admin'){
+                        $this->session->set('user_updatedByAdmin', 'Les informations de l\'utilisateur ont été mis à jour.');
+                        header('Location: index.php?route=administration');
+                    }
+                    else{
+                        $this->session->set('user_updated', 'Vos informations ont été mises à jour.');
+                        header('Location: index.php');
+                    }
                 }
                 return $this->view->render('profile',[
                     'post'=> $post,
