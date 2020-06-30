@@ -4,8 +4,11 @@
 <h6 class="session_msg"><?= $this->session->show('unflag_comment'); ?></h6>
 <h6 class="session_msg"><?= $this->session->show('account_delete'); ?></h6>
 <h6 class="session_msg"><?= $this->session->show('account_created'); ?></h6>
+<<<<<<< HEAD
 <h6 class="session_msg"><?= $this->session->show('user_updatedByAdmin'); ?></h6>
 
+=======
+>>>>>>> 0187154296ae75768aa7c77ecdea2c888ad279df
 
 <nav class="nav nav-tabs">
     <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Articles</a>
@@ -29,9 +32,15 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+<<<<<<< HEAD
                             <th>Titre</th>
                             <th>Contenu</th>
                             <th>Auteur</th>
+=======
+                            <th>Titre<i class="fa fa-sort"></i></th>
+                            <th>Contenu</th>
+                            <th>Auteur<i class="fa fa-sort"></i></th>
+>>>>>>> 0187154296ae75768aa7c77ecdea2c888ad279df
                             <th>Date publication</th>
                             <th>Actions</th>
                         </tr>
@@ -44,7 +53,11 @@
                         <tr>
                             <td><?= htmlspecialchars($article->getId());?></td>
                             <td><?= htmlspecialchars($article->getTitle());?></td>
+<<<<<<< HEAD
                             <td><?= substr(htmlspecialchars(strip_tags($article->getContent())), 0, 50);?></td>
+=======
+                            <td><?= substr(htmlspecialchars($article->getContent()), 0, 50);?></td>
+>>>>>>> 0187154296ae75768aa7c77ecdea2c888ad279df
                             <td>Jean Forteroche</td>
                             <td>Créé le : <?= htmlspecialchars($article->getDate_Creation());?></td>
                             <td>
