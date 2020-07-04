@@ -14,27 +14,8 @@ $password = isset($user) && $user->getPassword() ? htmlspecialchars($user->getPa
         </div>
     </div>
     <div class="row">
-        <div class="col-sm-3">
-            <!--left col-->
-
-
-            <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                    alt="avatar">
-                <h6>Upload photo...</h6>
-                <input type="file" class="text-center center-block file-upload" id="uploadAvatar">
-            </div>
-            </hr><br>
-            <ul class="list-group">
-                <li class="list-group-item text-muted">Activités <i class="fa fa-dashboard fa-1x"></i></li>
-                <li class="list-group-item text-right"><span class="pull-left"><strong>Commentaires</strong></span> 125
-                </li>
-            </ul>
-
-        </div>
         <!--/col-3-->
         <div class="col-sm-9">
-
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
                     <hr>

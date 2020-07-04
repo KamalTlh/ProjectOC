@@ -44,11 +44,7 @@
                         <tr>
                             <td><?= htmlspecialchars($article->getId());?></td>
                             <td><?= htmlspecialchars($article->getTitle());?></td>
-<<<<<<< HEAD
                             <td><?= substr(htmlspecialchars(strip_tags($article->getContent())), 0, 50);?></td>
-=======
-                            <td><?= substr(htmlspecialchars($article->getContent()), 0, 50);?></td>
->>>>>>> 0187154296ae75768aa7c77ecdea2c888ad279df
                             <td>Jean Forteroche</td>
                             <td>Créé le : <?= htmlspecialchars($article->getDate_Creation());?></td>
                             <td>
