@@ -20,5 +20,5 @@
             <a href="#" class="pull-right">Forgot Password?</a>
         </div>        
     </form>
-    <p class="text-center"><a href="index.php?route=createUser">Créer un compte</a></p>
+    <p class="text-center"><a href="index.php?route=createuser">Créer un compte</a></p>
 </div>

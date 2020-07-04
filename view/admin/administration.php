@@ -11,7 +11,7 @@
 >>>>>>> 0187154296ae75768aa7c77ecdea2c888ad279df
 
 <nav class="nav nav-tabs">
-    <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Articles</a>
+    <a class="nav-item nav-link active" href="#p1" data-toggle="tab">Episodes</a>
     <a class="nav-item nav-link" href="#p2" data-toggle="tab">Commentaires</a>
     <a class="nav-item nav-link" href="#p3" data-toggle="tab">Utilisateurs</a>
 </nav>
@@ -24,7 +24,7 @@
                         <div class="col-sm-4">
                         </div>
                         <div class="col-sm-4">
-                            <h2 class="text-center">Articles</h2>
+                            <h2 class="text-center">Episodes</h2>
                         </div>
                     </div>
                 </div>
