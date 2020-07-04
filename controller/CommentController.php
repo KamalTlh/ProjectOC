@@ -4,23 +4,21 @@ namespace controller;
 class CommentController extends Controller{
 
     public function addComment($post, $articleId, $pseudo){
-        if($this->checkLoggedIn()){
-            if(isset($post['submit'])){
-                $errors = $this->validation->validate($post, 'Comment');
-                if(!($errors)){
-                    $this->commentModel->addComment($post, $articleId, $pseudo);
-                    $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
-                    header('Location: index.php?route=readarticle&articleId='.$articleId);
-                }
-                $article = $this->articleModel->getArticle($_GET['articleId']);
-                $comments = $this->commentsModel->getCommentsFromArticle($_GET['articleId']);
-                return $this->view->render('readarticle', [
-                    'article'=> $article,
-                    'comments' => $comments,
-                    'post' => $post,
-                    'errors' => $errors
-                ]);
+        if($this->checkLoggedIn() || isset($post['submit'])){
+            $errors = $this->validation->validate($post, 'Comment');
+            if(!($errors)){
+                $this->commentModel->addComment($post, $articleId, $pseudo);
+                $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
+                header('Location: index.php?route=readarticle&articleId='.$articleId);
             }
+            $article = $this->articleModel->getArticle($_GET['articleId']);
+            $comments = $this->commentsModel->getCommentsFromArticle($_GET['articleId']);
+            return $this->view->render('readarticle', [
+                'article'=> $article,
+                'comments' => $comments,
+                'post' => $post,
+                'errors' => $errors
+            ]);
         }
     }
 

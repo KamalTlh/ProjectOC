@@ -8,7 +8,6 @@ class Autoloader{
     }
 
     public static function autoload($class){
-        $class = str_replace('public_html', '', $class);
         $class = str_replace('\\', '/', $class);
         require $class.'.php';
     }
