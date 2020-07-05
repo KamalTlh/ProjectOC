@@ -156,7 +156,7 @@ class UserController extends Controller{
     }
 
     public function administration(){
-        if($this->checkLoggedIn() || $this->checkAdmin()){
+        if($this->checkLoggedIn() && $this->checkAdmin()){
             $articles = $this->articlesModel->getListArticles();
             $comments = $this->commentsModel->getListComments();
             $flagComments = $this->commentsModel->getFlagComments();

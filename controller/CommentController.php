@@ -4,7 +4,7 @@ namespace controller;
 class CommentController extends Controller{
 
     public function addComment($post, $articleId, $pseudo){
-        if($this->checkLoggedIn() || isset($post['submit'])){
+        if($this->checkLoggedIn() && isset($post['submit'])){
             $errors = $this->validation->validate($post, 'Comment');
             if(!($errors)){
                 $this->commentModel->addComment($post, $articleId, $pseudo);
