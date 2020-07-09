@@ -88,8 +88,8 @@ class UserModel extends Model{
 
     public function updateUser($user, $userId){
         extract($user);
-        $sql =' UPDATE user SET pseudo = ?, email = ?, password= ? WHERE id = ?';
-        $this->createQuery($sql, [$pseudo, $email, password_hash($password, PASSWORD_BCRYPT), $userId]);
+        $sql =' UPDATE user SET pseudo = ?, email = ? WHERE id = ?';
+        $this->createQuery($sql, [$pseudo, $email, $userId]);
     }
 
     public function deleteUser($userId){
